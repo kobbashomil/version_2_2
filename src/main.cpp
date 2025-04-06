@@ -105,7 +105,6 @@ void handleRoot()
                 ".btn.east {background: #28a745;}"
                 ".btn.west {background: #dc3545;}"
                 ".btn.stop {background: #ffc107; color: #000;}"
-                ".btn.save {background: #007bff;}"
                 ".btn.time {background: #17a2b8;}"
                 ".settings-box {padding: 15px; background: #f8f9fa; border-radius: 10px; margin-top: 20px; text-align: left;}"
                 "form {margin-top: 20px;}"
@@ -121,38 +120,27 @@ void handleRoot()
                                      "<a href='/move?dir=west' class='btn west'>Move West</a>"
                                      "<a href='/move?dir=stop' class='btn stop'>Stop</a>"
                                      "<div class='settings-box'>"
-                                     "<h2>Settings</h2>"
+                                     "<h2>Auto Mode</h2>"
                                      "<form action='/settings' method='POST'>"
                                      "<label>Auto Mode: <input type='checkbox' name='autoMode' " +
                 (autoMode ? "checked" : "") + "></label>"
-                                              "<label>Morning Start Hour: <input type='number' name='morningStart' value='" +
-                String(morningStartHour) + "'></label>"
-                                           "<label>Night Return Hour: <input type='number' name='nightReturn' value='" +
-                String(nightReturnHour) + "'></label>"
-                                          "<label>Step Interval (min): <input type='number' name='stepInterval' value='" +
-                String(stepInterval) + "'></label>"
-
-                                       "<label>Motor Step Time (ms): <input type='number' name='motorStepTime' value='" +
-                String(motorStepTime) + "'></label><br>"
-
-                                        "<input type='submit' value='Save Settings' class='btn save'></form>"
-                                        "</div>"
-                                        //------------------
-                                        "<div class='settings-box'>"
-                                        "<h2>Set Time</h2>"
-                                        "<form action='/settime' method='POST'>"
-                                        "<label>Hour: <input type='number' name='hour' min='0' max='23'></label>"
-                                        "<label>Minute: <input type='number' name='minute' min='0' max='59'></label>"
-                                        "<label>Second: <input type='number' name='second' min='0' max='59'></label>"
-                                        "<label>Day: <input type='number' name='day' min='1' max='31'></label>"
-                                        "<label>Month: <input type='number' name='month' min='1' max='12'></label>"
-                                        "<label>Year: <input type='number' name='year' min='2020' max='2099'></label>"
-                                        "<input type='submit' value='Set Time' class='btn time'></form>"
-                                        "</div>"
-                                        "</div></body></html>";
+                                              "<input type='submit' value='Update Auto Mode' class='btn'></form>"
+                                              "</div>"
+                                              "<div class='settings-box'>"
+                                              "<h2>Set Time</h2>"
+                                              "<form action='/settime' method='POST'>"
+                                              "<label>Hour: <input type='number' name='hour' min='0' max='23'></label>"
+                                              "<label>Minute: <input type='number' name='minute' min='0' max='59'></label>"
+                                              "<label>Second: <input type='number' name='second' min='0' max='59'></label>"
+                                              "<label>Day: <input type='number' name='day' min='1' max='31'></label>"
+                                              "<label>Month: <input type='number' name='month' min='1' max='12'></label>"
+                                              "<label>Year: <input type='number' name='year' min='2020' max='2099'></label>"
+                                              "<input type='submit' value='Set Time' class='btn time'></form>"
+                                              "</div>"
+                                              "</div></body></html>";
   server.send(200, "text/html", html);
 }
-
+//--------------------
 void handleMove()
 {
   String direction = server.arg("dir");
